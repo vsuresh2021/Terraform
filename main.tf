@@ -16,13 +16,13 @@ provider "azurerm" {
 
 resource "azurerm_network_security_group" "example" {
   name                = "example-security-group"
-  location            = "Central India (Zone 1)"
+  location            = "Central India"
   resource_group_name = "Suresh-RG"
 }
 
 resource "azurerm_virtual_network" "example" {
   name                = "example-network"
-  location            = "Central India (Zone 1)"
+  location            = "Central India"
   resource_group_name = "Suresh-RG"
   address_space       = ["10.0.0.0/16"]
   dns_servers         = ["10.0.0.4", "10.0.0.5"]
