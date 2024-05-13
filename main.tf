@@ -1,49 +1,34 @@
 # We strongly recommend using the required_providers block to set the
-# # Azure Provider source and version being used
-# terraform {
-#   required_providers {
-#     azurerm = {
-#       source  = "hashicorp/azurerm"
-#       version = "=3.0.0"
-#     }
-#   }
-# }
+# Azure Provider source and version being used
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.0.0"
+    }
+  }
+}
 
-# # Configure the Microsoft Azure Provider
-# provider "azurerm" {
-#   features {}
-# }
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+  
+}
 
-# resource "azurerm_network_security_group" "example" {
-#   name                = "example-security-group"
-#   location            = "Central India"
-#   resource_group_name = "Suresh-RG"
-# }
 
-# resource "azurerm_virtual_network" "example" {
-#   name                = "example-network"
-#   location            = "Central India"
-#   resource_group_name = "Suresh-RG"
-#   address_space       = ["10.0.0.0/16"]
-#   dns_servers         = ["10.0.0.4", "10.0.0.5"]
 
-#   subnet {
-#     name           = "subnet1"
-#     address_prefix = "10.0.1.0/24"
-#   }
+resource "azurerm_virtual_network" "example1" {
+  name                = "my-vnet1"
+  address_space       = ["10.0.0.0/16"]
+  location            = "East US"
+  resource_group_name = "Suresh-RG"
+}
 
-#   subnet {
-#     name           = "subnet2"
-#     address_prefix = "10.0.2.0/24"
-#     security_group = azurerm_network_security_group.example.id
-#   }
+resource "azurerm_subnet" "example2" {
+  name                 = "my-subnet2"
+  resource_group_name  = "Suresh-RG"
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.0.1.0/24"]
+}
 
-#  subnet {
-#     name           = "subnet3"
-#     address_prefix = "10.0.3.0/24"
-#   }
-#   tags = {
-#     environment = "Production"
-#   }
-# }
-# #
+
