@@ -32,3 +32,4 @@ resource "azurerm_subnet" "example2" {
 }
 
 
+
