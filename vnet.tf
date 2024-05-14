@@ -36,5 +36,11 @@ resource "azurerm_subnet" "example3" {
   virtual_network_name = azurerm_virtual_network.example1.name
   address_prefixes     = ["10.0.1.0/24"]
 }
+resource "azurerm_subnet" "example4" {
+  name                 = "my-subnet4"
+  resource_group_name  = "Suresh-RG"
+  virtual_network_name = azurerm_virtual_network.example1.name
+  address_prefixes     = ["10.0.1.0/24"]
+}
 
 
